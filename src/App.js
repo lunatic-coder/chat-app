@@ -14,7 +14,6 @@ function App() {
       <PublicRoute path="/signin">
         <SignIn />
       </PublicRoute>
-
       <PrivateRoute path="/">
         <Home />
       </PrivateRoute>
