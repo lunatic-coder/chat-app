@@ -15,7 +15,7 @@ const PrivateRoute = ({ children, ...routePrpos }) => {
   }
 
   if (!profile && !isLoading) {
-    return <Redirect to="signin" />;
+    return <Redirect to="/signin" />;
   }
 
   return <Route {...routePrpos}>{children}</Route>;
