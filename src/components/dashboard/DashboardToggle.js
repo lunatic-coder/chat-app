@@ -10,7 +10,7 @@ const DashboardToggle = () => {
   const isMobile = useMediaQuery('(max-width= 992px)');
 
   const onSignOut = useCallback(() => {
-    auth.SignOut();
+    auth.signOut();
 
     Alert.info('Signed out', 4000);
 
