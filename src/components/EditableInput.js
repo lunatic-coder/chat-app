@@ -19,7 +19,7 @@ const EditableInput = ({
   }, []);
 
   const onEditClick = useCallback(() => {
-    setIsEditable((p = !p));
+    setIsEditable(p => !p);
     setInput(initialValue);
   }, [initialValue]);
 
@@ -48,11 +48,11 @@ const EditableInput = ({
           value={input}
           onChange={onInputChange}
         />
-        <InputGroup.Button conClick={onEditClick}>
+        <InputGroup.Button onClick={onEditClick}>
           <Icon icon={isEditable ? 'close' : 'edit2'} />
         </InputGroup.Button>
         {isEditable && (
-          <InputGroup.Button conClick={onSaveClick}>
+          <InputGroup.Button onClick={onSaveClick}>
             <Icon icon="check" />
           </InputGroup.Button>
         )}
