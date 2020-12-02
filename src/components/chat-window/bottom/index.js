@@ -17,6 +17,7 @@ function assembleMessage(profile, chatId) {
     },
 
     creeatedAt: firebase.database.ServerValue.TIMESTAMP,
+    likeCount: 0,
   };
 }
 
