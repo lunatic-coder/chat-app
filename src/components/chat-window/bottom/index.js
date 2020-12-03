@@ -83,7 +83,7 @@ const Bottom = () => {
 
         const messageId = database.ref('messages').push().key;
 
-        updates[`/messages/${messageId}`] = msgData();
+        updates[`/messages/${messageId}`] = msgData;
       });
 
       const lastMsgId = Object.keys(updates).pop();

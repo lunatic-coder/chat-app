@@ -60,7 +60,7 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
 
   return (
     <li
-      classNam={`padded mb-1 cursor-pointer ${isHovered ? 'bg-black-02' : ''}`}
+      className={`padded mb-1 cursor-pointer ${isHovered ? 'bg-black-02' : ''}`}
       ref={selRef}
     >
       <div className="d-flex align-items-center font-bolder mb-1">

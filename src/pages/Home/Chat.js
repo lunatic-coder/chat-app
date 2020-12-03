@@ -6,7 +6,7 @@ import ChatTop from '../../components/chat-window/top';
 import ChatBottom from '../../components/chat-window/bottom';
 import Messages from '../../components/chat-window/messages';
 import { useRooms } from '../../context/rooms.context';
-import { currentRoomProvider } from '../../context/current-room.context';
+import { CurrentRoomProvider } from '../../context/current-room.context';
 import { transformToArr } from '../../misc/helpers';
 import { auth } from '../../misc/firebase';
 
@@ -22,34 +22,36 @@ const Chat = () => {
   const currentRoom = rooms.find(room => room.id === chatId);
 
   if (!currentRoom) {
-    return <h6 className="text-center at-apge"> chat {chatId} not found </h6>;
+    return <h6 className="text-center mt-page">Chat {chatId} not found</h6>;
   }
 
   const { name, description } = currentRoom;
 
   const admins = transformToArr(currentRoom.admins);
+  const fcmUsers = transformToArr(currentRoom.fcmUsers);
   const isAdmin = admins.includes(auth.currentUser.uid);
+  const isReceivingFcm = fcmUsers.includes(auth.currentUser.uid);
 
   const currentRoomData = {
     name,
     description,
     admins,
     isAdmin,
+    isReceivingFcm,
   };
 
   return (
-    <currentRoomProvider data={currentRoomData}>
+    <CurrentRoomProvider data={currentRoomData}>
       <div className="chat-top">
         <ChatTop />
       </div>
       <div className="chat-middle">
         <Messages />
       </div>
-
-      <div chat-bottom>
+      <div className="chat-bottom">
         <ChatBottom />
       </div>
-    </currentRoomProvider>
+    </CurrentRoomProvider>
   );
 };
 

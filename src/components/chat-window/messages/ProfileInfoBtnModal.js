@@ -2,11 +2,12 @@ import React from 'react';
 import { Button, Modal } from 'rsuite';
 
 import { useModalState } from '../../../misc/custom-hooks';
+import { useProfile } from '../../../context/profile.context';
 import ProfileAvatar from '../../ProfileAvatar';
 
 const ProfileInfoBtnModal = ({ profile, children, ...btnProps }) => {
   const { isOpen, close, open } = useModalState();
-  const { name, avatar, createdAt } = profile();
+  const { name, avatar, createdAt } = useProfile();
 
   const shortName = profile.name.split(' ')[0];
 
