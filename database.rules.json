@@ -27,7 +27,7 @@
         ".write": "auth !== null"
       }
     },
-    "Status": {
+    "status": {
       "$user_id": {
         ".read": "auth !== null",
         ".write": "$user_id === auth.uid"
