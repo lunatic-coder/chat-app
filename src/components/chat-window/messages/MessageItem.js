@@ -32,16 +32,8 @@ const renderFileMessage = file => {
   return <a href={file.url}>Download {file.name}</a>;
 };
 
-const MessageItem = ({ message, handleAdmin, handleLike }) => {
-  const {
-    author,
-    createdAt,
-    text,
-    file,
-    likes,
-    likeCount,
-    handleDelete,
-  } = message;
+const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
+  const { author, createdAt, text, file, likes, likeCount } = message;
 
   const [selRef, isHovered] = useHover();
 
@@ -54,7 +46,7 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
   const isAuthor = auth.currentUser.uid === author.uid;
   const canGrantAdmin = isAdmin && !isAuthor;
 
-  const canShowIcon = isMobile || isHovered;
+  const canShowIcons = isMobile || isHovered;
 
   const isLiked = likes && Object.keys(likes).includes(auth.currentUser.uid);
 
@@ -94,7 +86,7 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
         <IconBtnControl
           // eslint-disable-next-line
           {...(isLiked ? { color: 'red' } : {})}
-          isVisible={canShowIcon}
+          isVisible={canShowIcons}
           iconName="heart"
           tooltip="like this message"
           onClick={() => handleLike(message.id)}
@@ -102,7 +94,7 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
         />
         {isAuthor && (
           <IconBtnControl
-            isVisible={canShowIcon}
+            isVisible={canShowIcons}
             iconName="close"
             tooltip="Delete this message"
             onClick={() => handleDelete(message.id, file)}
